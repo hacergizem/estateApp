@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/colorPrimary"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/txtWelcomeAppName"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kayıt Ol"
+        android:textSize="35sp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_below="@+id/txtWelcomeAppName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:paddingStart="15dp"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Kullanıcı Adı"
+            android:background="@android:color/white"
+            android:layout_marginBottom="20dp">
+        </EditText>
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:paddingStart="15dp"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Şifre"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/white">
+        </EditText>
+        <EditText
+            android:id="@+id/editTextPasswordAgain"
+            android:paddingStart="15dp"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Şifre Tekrar"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/white">
+        </EditText>
+        <EditText
+            android:id="@+id/editPhoneNumber"
+            android:paddingStart="15dp"
+            android:inputType="textPhonetic"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Telefon"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/white">
+        </EditText>
+        <EditText
+            android:id="@+id/editMailInf"
+            android:paddingStart="15dp"
+            android:inputType="textPhonetic"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="E-posta Adresi"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/white">
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Kayıt Ol"
+            android:textColor="@android:color/white"
+            android:background="#aaaaff">
+        </Button>
+
+    </LinearLayout>
+</RelativeLayout>

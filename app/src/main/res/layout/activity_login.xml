@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/colorPrimary"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/ambulance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ambulance"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtWelcomeAppName"
+        android:layout_marginTop="20dp">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/txtWelcomeAppName"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acil Durum Uygulaması"
+        android:textSize="35sp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp">
+    </TextView>
+
+    <LinearLayout
+        android:layout_below="@+id/ambulance"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:paddingStart="15dp"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Kullanıcı Adı"
+            android:background="@android:color/white"
+            android:layout_marginBottom="20dp">
+        </EditText>
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:paddingStart="15dp"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Şifre"
+            android:background="@android:color/white">
+        </EditText>
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:background="#aaaaff"
+            android:text="Giriş Yap"
+            android:textColor="@android:color/white">
+        </Button>
+
+        <TextView
+            android:id="@+id/textRegistered"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kayıt Ol"
+            android:textColor="@android:color/white">
+        </TextView>
+    </LinearLayout>
+</RelativeLayout>
