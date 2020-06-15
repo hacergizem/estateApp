@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    android:elevation="4dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
+    app:titleTextColor="@android:color/white">
+
+        <TextView
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Konutlarınız"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white">
+        </TextView>
+
+</androidx.appcompat.widget.Toolbar>

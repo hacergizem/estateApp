@@ -22,12 +22,10 @@
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
 
-
             KullaniciAdi = findViewById(R.id.editTextUsername);
             Sifre = findViewById(R.id.editTextPassword);
             GirisYap = findViewById(R.id.buttonLogin);
             sharedPreferences = getSharedPreferences("login", 0);
-
 
             final String registeredUserName = sharedPreferences.getString("KullaniciAdi","");
             final String registeredPassword = sharedPreferences.getString("Sifre","");
@@ -37,7 +35,7 @@
             Bundle b = intent1.getExtras();
 
             if((b != null && !b.get("auto").equals("gizem"))&&!(registeredUserName.equals("")&&registeredPassword.equals(""))) {
-                Intent intent = new Intent(LoginActivity.this, HomeAcitivty.class);
+                Intent intent = new Intent(LoginActivity.this, ListeActivity.class);
                 startActivity(intent);
             }
 
@@ -46,10 +44,9 @@
                 public void onClick(View v) {
                     if (KullaniciAdi.getText().toString().equals(registeredUserName) && Sifre.getText().toString().equals(registeredPassword)) {
                         Log.d("deneme", KullaniciAdi.getText().toString() + "kullanici adi");
-                        Intent intent = new Intent(LoginActivity.this, HomeAcitivty.class);
+                        Intent intent = new Intent(LoginActivity.this, ListeActivity.class);
                         startActivity(intent);
                     }
-
                 }
 
             });

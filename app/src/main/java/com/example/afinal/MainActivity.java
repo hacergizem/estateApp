@@ -74,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
         Bundle b = intent1.getExtras();
 
         if (!(registeredUserName.equals("") && registeredPassword.equals(""))) {
-            Intent intent = new Intent(context, HomeAcitivty.class);
+            Intent intent = new Intent(context, ListeActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 }
