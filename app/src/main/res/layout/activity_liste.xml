@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ListeActivity">
 
-    <include android:id="@+id/toolbarListe"
-        layout="@layout/toolbar">
-    </include>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

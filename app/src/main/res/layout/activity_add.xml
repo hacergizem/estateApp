@@ -4,24 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity">
+    tools:context=".AddActivity"
+    android:gravity="center">
+
+    <TextView
+        android:layout_marginBottom="10sp"
+        android:id="@+id/guncellemeEkrani"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:text="Yeni Konut \n Ekle"
+        android:textSize="25sp"
+        android:background="#ca99ff"
+        android:padding="25dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/white">
+    </TextView>
 
     <LinearLayout
+        android:layout_below="@+id/guncellemeEkrani"
+        android:background="#d1d1ff"
         android:id="@+id/informations"
         android:padding="50dp"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <ImageView
+            android:src="@drawable/add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </ImageView>
+
         <EditText
             android:id="@+id/addTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ev Başlık">
+            android:hint="Ev Başlık"
+            android:textColorLink="#9C27B0">
         </EditText>
         <EditText
             android:id="@+id/addTown"
@@ -43,19 +63,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <Button
+                android:background="#a654ff"
+                android:textColor="@android:color/white"
                 android:id="@+id/addButton"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:text="Ekle">
             </Button>
-            <Button
-                android:id="@+id/deleteButton"
-                android:layout_marginStart="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delete"
-                android:background="@android:color/holo_red_dark">
-            </Button>
+
         </LinearLayout>
 
     </LinearLayout>

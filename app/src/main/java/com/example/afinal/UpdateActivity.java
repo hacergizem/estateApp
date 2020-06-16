@@ -23,14 +23,15 @@ public class UpdateActivity extends AppCompatActivity {
         town_input = findViewById(R.id.addTown2);
         pager_input = findViewById(R.id.addPager2);
         update_button = findViewById(R.id.updateButton);
+        getAndSetIntentData();
 
         update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
+                myDB.updateData(id,title,town,pager);
             }
         });
-        getAndSetIntentData();
 
     }
 

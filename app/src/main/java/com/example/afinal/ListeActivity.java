@@ -1,8 +1,10 @@
 package com.example.afinal;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,7 +16,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -31,9 +32,18 @@ public class ListeActivity extends AppCompatActivity {
     CustomAdapter customAdapter;
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            recreate();
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste);
+
 
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.floatingActionButton);
@@ -54,7 +64,7 @@ public class ListeActivity extends AppCompatActivity {
 
         storeDataInArray();
 
-        customAdapter = new CustomAdapter(ListeActivity.this,input_id,input_title,input_town,input_pager);
+        customAdapter = new CustomAdapter(ListeActivity.this,this,input_id,input_title,input_town,input_pager);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(ListeActivity.this));
     }

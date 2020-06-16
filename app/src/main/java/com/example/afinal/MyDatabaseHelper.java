@@ -21,7 +21,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_TOWN = "my_town";
     private static final String COLUMN_PAGER = "my_adress";
 
-    public MyDatabaseHelper(@Nullable Context context) {
+    MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSİON);
         this.context = context;
     }
@@ -53,21 +53,36 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, cv);
         if (result == -1) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        }
-        else{
+        } else {
             Toast.makeText(context, "Added Succesfully", Toast.LENGTH_SHORT).show();
         }
     }
 
-    Cursor readAllData(){
+    Cursor readAllData() {
         String query = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
 
-        if (db != null){
+        if (db != null) {
             cursor = db.rawQuery(query, null);
         }
         return cursor;
+    }
+
+    void updateData(String row_id, String title, String town, String pager) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_TITLE, title);
+        cv.put(COLUMN_TOWN, town);
+        cv.put(COLUMN_PAGER, pager);
+
+        long result = db.update(TABLE_NAME,cv,"_id=?", new String []{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Failed to Update.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context, "Succesfully updated.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

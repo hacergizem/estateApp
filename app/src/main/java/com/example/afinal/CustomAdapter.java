@@ -1,5 +1,6 @@
 package com.example.afinal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Layout;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,14 +19,15 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
+    Activity activity;
     private ArrayList input_id, input_title, input_town, input_pager;
 
-    CustomAdapter(Context context,
+    CustomAdapter(Activity activity, Context context,
                   ArrayList input_id,
                   ArrayList input_title,
                   ArrayList input_town,
                   ArrayList input_pager) {
-
+        this.activity = activity;
         this.context = context;
         this.input_id = input_id;
         this.input_title = input_title;
@@ -57,7 +60,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 intent.putExtra("town", String.valueOf(input_town.get(position)));
                 intent.putExtra("pager", String.valueOf(input_pager.get(position)));
 
-                context.startActivity(intent);
+                activity.startActivityForResult(intent,1);
             }
         });
     }
@@ -70,7 +73,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView input_id, input_title, input_town, input_pager;
-        LinearLayout mainLayout;
+        RelativeLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
