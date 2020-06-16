@@ -12,14 +12,15 @@ import androidx.annotation.Nullable;
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
-    private static final String DATABASE_NAME = "Emergency.db";
+    private static final String DATABASE_NAME = "Acil.db";
     private static final int DATABASE_VERSİON = 1;
 
-    private static final String TABLE_NAME = "my_library";
+    private static final String TABLE_NAME = "my_library1";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_TITLE = "my_city";
     private static final String COLUMN_TOWN = "my_town";
     private static final String COLUMN_PAGER = "my_adress";
+    private static final String IMAGE_URL = "img_url";
 
     MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSİON);
@@ -32,7 +33,8 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
                 " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_TITLE + " TEXT," +
                 COLUMN_TOWN + " TEXT," +
-                COLUMN_PAGER + " TEXT);";
+                COLUMN_PAGER + " TEXT," +
+                IMAGE_URL + "TEXT" + ")";
         db.execSQL(query);
 
     }
@@ -43,13 +45,15 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addBook(String title, String town, String pager) {
+    void addBook(String title, String town, String pager, String imgUrl) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_TITLE, title);
         cv.put(COLUMN_TOWN, town);
         cv.put(COLUMN_PAGER, pager);
+        cv.put(IMAGE_URL, imgUrl);
+
         long result = db.insert(TABLE_NAME, null, cv);
         if (result == -1) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
@@ -83,6 +87,17 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }
         else{
             Toast.makeText(context, "Succesfully updated.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    void deleteOneRow(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
+        if (result == -1){
+            Toast.makeText(context, "Failed to deleted.", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context, "Succesfully Deleted.", Toast.LENGTH_SHORT).show();
         }
     }
 }

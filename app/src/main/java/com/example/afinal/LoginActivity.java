@@ -1,5 +1,6 @@
     package com.example.afinal;
 
+    import androidx.appcompat.app.ActionBar;
     import androidx.appcompat.app.AppCompatActivity;
 
     import android.content.Intent;
@@ -17,10 +18,15 @@
 
         SharedPreferences sharedPreferences;
 
+        UserProfile userProfile;
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
+
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.hide();
 
             KullaniciAdi = findViewById(R.id.editTextUsername);
             Sifre = findViewById(R.id.editTextPassword);
@@ -34,10 +40,6 @@
             Intent intent1 = getIntent();
             Bundle b = intent1.getExtras();
 
-            if((b != null && !b.get("auto").equals("gizem"))&&!(registeredUserName.equals("")&&registeredPassword.equals(""))) {
-                Intent intent = new Intent(LoginActivity.this, ListeActivity.class);
-                startActivity(intent);
-            }
 
             GirisYap.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -46,6 +48,7 @@
                         Log.d("deneme", KullaniciAdi.getText().toString() + "kullanici adi");
                         Intent intent = new Intent(LoginActivity.this, ListeActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
 

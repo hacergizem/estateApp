@@ -1,5 +1,6 @@
 package com.example.afinal;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -26,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final UserProfile userProfile = new UserProfile();
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
 
         KullaniciAdi = findViewById(R.id.editTextUsername);
         Sifre = findViewById(R.id.editTextPassword);
@@ -45,24 +51,35 @@ public class MainActivity extends AppCompatActivity {
                 String passwordValueAgain = SifreTekrar.getText().toString();
                 String phoneValue = Telefon.getText().toString();
                 String mailValue = Eposta.getText().toString();
-
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                intent.putExtra("auto", "gizem");
-                startActivity(intent);
-
-
-                if (usernameValue.length() > 1) {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("KullaniciAdi", usernameValue);
-                    editor.putString("Sifre", passwordValue);
-                    editor.putString("SifreTekrar", passwordValueAgain);
-                    editor.putString("Telefon", phoneValue);
-                    editor.putString("Email", mailValue);
-                    editor.apply();
-                    Toast.makeText(MainActivity.this, "User Registered", Toast.LENGTH_SHORT).show();
-
+                if (usernameValue.equals("") || passwordValue.equals("") || passwordValueAgain.equals("") || phoneValue.equals("") || mailValue.equals("")) {
+                    Toast.makeText(MainActivity.this, "Boş olamaz", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Enter Value in the Field", Toast.LENGTH_SHORT).show();
+                    userProfile.setUserfullname(KullaniciAdi.getText().toString());
+                    userProfile.setUserpassword(Sifre.getText().toString());
+                    userProfile.setUsermail(Eposta.getText().toString());
+                    userProfile.setUsernumber(KullaniciAdi.getText().toString());
+                    userProfile.setUsername(KullaniciAdi.getText().toString());
+
+
+
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("KullaniciAdi", usernameValue);
+                        editor.putString("Sifre", passwordValue);
+                        editor.putString("SifreTekrar", passwordValueAgain);
+                        editor.putString("Telefon", phoneValue);
+                        editor.putString("Email", mailValue);
+                        editor.apply();
+                        Toast.makeText(MainActivity.this, "User Registered", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        intent.putExtra("userInfo", userProfile);
+                        startActivity(intent);
+                        finish();
+
+
+                        Toast.makeText(MainActivity.this, "Enter Value in the Field", Toast.LENGTH_SHORT).show();
+
+
                 }
             }
         });
