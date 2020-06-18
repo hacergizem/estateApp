@@ -22,6 +22,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </ImageView>
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resim Ekle">
+        </TextView>
 
         <EditText
             android:id="@+id/addTitle"
@@ -30,6 +36,16 @@
             android:hint="Ev Başlık"
             android:textColorLink="#9C27B0">
         </EditText>
+        <Spinner
+            android:id="@+id/spinnerTown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Spinner>
+        <Spinner
+            android:id="@+id/spinnerIlce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Spinner>
         <EditText
             android:id="@+id/addTown"
             android:layout_width="match_parent"

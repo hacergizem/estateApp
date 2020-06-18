@@ -13,7 +13,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "Acil.db";
-    private static final int DATABASE_VERSİON = 1;
+    private static final int DATABASE_VERSİON = 2;
 
     private static final String TABLE_NAME = "my_library1";
     private static final String COLUMN_ID = "_id";
@@ -34,9 +34,8 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_TITLE + " TEXT," +
                 COLUMN_TOWN + " TEXT," +
                 COLUMN_PAGER + " TEXT," +
-                IMAGE_URL + "TEXT" + ")";
+                IMAGE_URL + " TEXT" + ")";
         db.execSQL(query);
-
     }
 
     @Override
@@ -62,42 +61,42 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    Cursor readAllData() {
+    Cursor readAllData(){
         String query = "SELECT * FROM " + TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
-
-        if (db != null) {
+        if(db != null){
             cursor = db.rawQuery(query, null);
         }
         return cursor;
     }
 
-    void updateData(String row_id, String title, String town, String pager) {
+    void updateData(String row_id, String title, String author, String pages){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        cv.put(IMAGE_URL,"imgurl");
         cv.put(COLUMN_TITLE, title);
-        cv.put(COLUMN_TOWN, town);
-        cv.put(COLUMN_PAGER, pager);
+        cv.put(COLUMN_TOWN, author);
+        cv.put(COLUMN_PAGER, pages);
 
-        long result = db.update(TABLE_NAME,cv,"_id=?", new String []{row_id});
-        if (result == -1){
-            Toast.makeText(context, "Failed to Update.", Toast.LENGTH_SHORT).show();
+
+        long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(context, "Succesfully updated.", Toast.LENGTH_SHORT).show();
-        }
+
     }
 
     void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
-        if (result == -1){
-            Toast.makeText(context, "Failed to deleted.", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Toast.makeText(context, "Succesfully Deleted.", Toast.LENGTH_SHORT).show();
+        if(result == -1){
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -10,15 +10,15 @@
     import android.view.View;
     import android.widget.Button;
     import android.widget.EditText;
+    import android.widget.TextView;
 
     public class LoginActivity extends AppCompatActivity {
 
         EditText KullaniciAdi, Sifre;
         Button GirisYap;
+        TextView kayitol;
 
         SharedPreferences sharedPreferences;
-
-        UserProfile userProfile;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,15 @@
             KullaniciAdi = findViewById(R.id.editTextUsername);
             Sifre = findViewById(R.id.editTextPassword);
             GirisYap = findViewById(R.id.buttonLogin);
+            kayitol = findViewById(R.id.textRegistered);
+            kayitol.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("Directed",true);
+                    startActivity(intent);
+                }
+            });
             sharedPreferences = getSharedPreferences("login", 0);
 
             final String registeredUserName = sharedPreferences.getString("KullaniciAdi","");

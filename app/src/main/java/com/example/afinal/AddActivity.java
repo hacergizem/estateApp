@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -17,6 +19,7 @@ public class AddActivity extends AppCompatActivity {
     Button add_button;
     ImageView img;
     Uri selectedImage;
+    Spinner spinner, spinner2;
 
 
     @Override
@@ -24,9 +27,24 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        spinner = findViewById(R.id.spinnerTown);
+        spinner2 = findViewById(R.id.spinnerIlce);
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setTitle("Yeni Konut Ekle");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        String[] iller = {"Ankara","Istanbul","İzmir"};
+        ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, iller);
+        aa.setDropDownViewResource(
+                android.R.layout.simple_spinner_item);
+        spinner.setAdapter(aa);
+
+        String[] ilceler = {"Keçiören","Dikmen","Eryaman","Bağcılar","Fatih","Zeytinburnu","Balçova","Bornova","Gaziemir",};
+        ArrayAdapter<String> bb = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ilceler);
+        bb.setDropDownViewResource(
+                android.R.layout.simple_spinner_item);
+        spinner2.setAdapter(bb);
+
 
         title_input = findViewById(R.id.addTitle);
         town_input = findViewById(R.id.addTown);
@@ -50,12 +68,12 @@ public class AddActivity extends AppCompatActivity {
                 if (selectedImage != null) {
                     MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
                     myDB.addBook(title_input.getText().toString().trim(),
-                            town_input.getText().toString().trim(),
-                            pager_input.getText().toString().trim(),selectedImage.toString().trim());
+                           spinner.getSelectedItem().toString(),
+                            spinner2.getSelectedItem().toString(),
+                            selectedImage.toString().trim());
                 }
             }
         });
-
     }
 
     public static final int PICK_IMAGE = 1;

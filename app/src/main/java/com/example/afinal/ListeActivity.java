@@ -2,6 +2,7 @@ package com.example.afinal;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -49,8 +50,8 @@ public class ListeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.exitItem) {
             SharedPreferences prefer = getSharedPreferences("login",0);
-            prefer.edit().remove("KullaniciAdi").commit();
-            prefer.edit().remove("Sifre").commit();
+            prefer.edit().remove("KullaniciAdi").apply();
+            prefer.edit().remove("Sifre").apply();
 
             Intent intent = new Intent(ListeActivity.this,MainActivity.class);
             startActivity(intent);
@@ -67,6 +68,9 @@ public class ListeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste);
+
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setTitle("Ana Sayfa");
 
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.floatingActionButton);

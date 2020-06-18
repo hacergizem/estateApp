@@ -24,7 +24,11 @@ public class ProfileActivity extends AppCompatActivity {
         password = findViewById(R.id.updSifre);
         telefon = findViewById(R.id.updTelefon);
         eposta = findViewById(R.id.updEposta);
-
+        SharedPreferences prefs1 = getSharedPreferences("login", 0);
+        username.setText(prefs1.getString("KullaniciAdi",""));
+        password.setText(prefs1.getString("Sifre",""));
+        telefon.setText(prefs1.getString("Telefon",""));
+        eposta.setText(prefs1.getString("Email",""));
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

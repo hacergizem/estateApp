@@ -17,7 +17,6 @@
             android:name=".AddActivity"
             android:parentActivityName=".ListeActivity" />
         <activity android:name=".ListeActivity" />
-        <activity android:name=".HomeAcitivty" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

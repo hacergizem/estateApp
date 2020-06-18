@@ -2,8 +2,6 @@ package com.example.afinal;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -60,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
                     userProfile.setUsernumber(KullaniciAdi.getText().toString());
                     userProfile.setUsername(KullaniciAdi.getText().toString());
 
-
-
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("KullaniciAdi", usernameValue);
                         editor.putString("Sifre", passwordValue);
@@ -76,10 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
 
-
                         Toast.makeText(MainActivity.this, "Enter Value in the Field", Toast.LENGTH_SHORT).show();
-
-
                 }
             }
         });
@@ -91,12 +84,23 @@ public class MainActivity extends AppCompatActivity {
         Log.d("deneme", registeredPassword + "adadfd");
 
         Intent intent1 = getIntent();
-        Bundle b = intent1.getExtras();
-
-        if (!(registeredUserName.equals("") && registeredPassword.equals(""))) {
-            Intent intent = new Intent(context, ListeActivity.class);
-            startActivity(intent);
-            finish();
+        Bundle b = new Bundle();
+        b = getIntent().getExtras();
+        Boolean bool = true;
+        if (b != null){
+            if (!(registeredUserName.equals("") && registeredPassword.equals("")) &&  ! b.getBoolean("Directed")) {
+                Intent intent = new Intent(context, ListeActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
+        else{
+            if (!(registeredUserName.equals("") && registeredPassword.equals(""))) {
+                Intent intent = new Intent(context, ListeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }
+
     }
 }

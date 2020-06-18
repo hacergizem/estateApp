@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +40,10 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
-                myDB.updateData(id,title,town,pager);
+                title = title_input.getText().toString().trim();
+                town = town_input.getText().toString().trim();
+                pager = pager_input.getText().toString().trim();
+                myDB.updateData(id, title, town, pager);
             }
         });
         delete_button.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +64,7 @@ public class UpdateActivity extends AppCompatActivity {
             title_input.setText(title);
             town_input.setText(town);
             pager_input.setText(pager);
+            Log.d("deneme",id);
         }
         else{
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
@@ -68,9 +73,9 @@ public class UpdateActivity extends AppCompatActivity {
 
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete "+ title + "?");
-        builder.setMessage("Are you sure to want to delete " + title + "?" );
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle("Kolonu sil: "+ title + "?");
+        builder.setMessage(title +  " kolonunun silmek istediğinize emin misiniz?" );
+        builder.setPositiveButton("Evet", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
@@ -78,7 +83,7 @@ public class UpdateActivity extends AppCompatActivity {
                 finish();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Hayır", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
