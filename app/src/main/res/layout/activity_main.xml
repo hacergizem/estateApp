@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/colorPrimary"
+    android:background="#ffa3cf"
     android:padding="20dp">
 
     <TextView
@@ -62,7 +62,7 @@
             android:inputType="textPhonetic"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:hint="Telefon"
+            android:hint="@string/telefon"
             android:layout_marginBottom="20dp"
             android:background="@android:color/white">
         </EditText>
@@ -83,7 +83,7 @@
             android:layout_marginTop="35dp"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:text="Kayıt Ol"
+            android:text="@string/kay_t_ol"
             android:textColor="@android:color/white"
             android:background="#aaaaff">
         </Button>

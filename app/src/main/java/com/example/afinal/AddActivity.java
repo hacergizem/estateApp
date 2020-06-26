@@ -47,8 +47,6 @@ public class AddActivity extends AppCompatActivity {
 
 
         title_input = findViewById(R.id.addTitle);
-        town_input = findViewById(R.id.addTown);
-        pager_input = findViewById(R.id.addPager);
         add_button = findViewById(R.id.addButton);
         img = findViewById(R.id.addPicture);
 
@@ -67,7 +65,7 @@ public class AddActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (selectedImage != null) {
                     MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
-                    myDB.addBook(title_input.getText().toString().trim(),
+                    myDB.addItem(title_input.getText().toString().trim(),
                            spinner.getSelectedItem().toString(),
                             spinner2.getSelectedItem().toString(),
                             selectedImage.toString().trim());

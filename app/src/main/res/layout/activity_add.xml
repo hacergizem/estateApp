@@ -46,18 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </Spinner>
-        <EditText
-            android:id="@+id/addTown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Şehir Ekle">
-        </EditText>
-        <EditText
-            android:id="@+id/addPager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="İlçe Ekle">
-        </EditText>
+
 
         <LinearLayout
             android:layout_marginTop="20dp"

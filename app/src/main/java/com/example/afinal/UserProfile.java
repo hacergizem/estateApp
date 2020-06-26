@@ -1,12 +1,12 @@
 package com.example.afinal;
 import java.io.Serializable;
 
-class UserProfile implements Serializable {
+public class UserProfile implements Serializable {
     private String userfullname;
     private String username;
     private String usermail;
     private String userpassword;
-
+    public static int userid =0;
     public UserProfile(){
 
     }

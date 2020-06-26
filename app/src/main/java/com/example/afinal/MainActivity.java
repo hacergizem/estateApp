@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Telefon = findViewById(R.id.editPhoneNumber);
         Eposta = findViewById(R.id.editMailInf);
         KayitOl = findViewById(R.id.buttonRegister);
+
+
         sharedPreferences = getSharedPreferences("login", 0);
 
         isLogin(this);
@@ -67,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                         editor.apply();
                         Toast.makeText(MainActivity.this, "User Registered", Toast.LENGTH_SHORT).show();
 
+//!!!!!!!!!!!!!!!!!!!!!
+                        UserDBHelper db=new UserDBHelper(MainActivity.this);
+                        db.insertUserDetails(usernameValue , passwordValue, mailValue,phoneValue);
+
                         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                         intent.putExtra("userInfo", userProfile);
                         startActivity(intent);
@@ -77,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
+    //KAYIT VAR MI, VARSA ATLIYOR O AN KAYDOLDUYSA DİREKT GİRİŞE GİDİYOR
     private void isLogin(Context context) {
         final String registeredUserName = sharedPreferences.getString("KullaniciAdi", "");
         final String registeredPassword = sharedPreferences.getString("Sifre", "");

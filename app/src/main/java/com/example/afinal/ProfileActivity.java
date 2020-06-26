@@ -1,5 +1,6 @@
 package com.example.afinal;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,6 +20,10 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setTitle("Profil Güncelle");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         btn = findViewById(R.id.updateButtonProfile);
         username = findViewById(R.id.updateUsername);
         password = findViewById(R.id.updSifre);
@@ -32,6 +37,14 @@ public class ProfileActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //sql lite a kayıt
+                UserDBHelper db= new UserDBHelper(ProfileActivity.this);
+                db.UpdateUserDetails(password.getText().toString(),username.getText().toString(), telefon.getText().toString(), eposta.getText().toString(),UserProfile.userid);
+
+
+
+                //sp ye kayıt
                 SharedPreferences prefs = getSharedPreferences("login", 0);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("KullaniciAdi", username.getText().toString());

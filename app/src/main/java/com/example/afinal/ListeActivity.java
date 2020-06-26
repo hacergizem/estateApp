@@ -84,6 +84,7 @@ public class ListeActivity extends AppCompatActivity {
         });
 
         myDB = new MyDatabaseHelper(ListeActivity.this);
+
         input_id = new ArrayList<>();
         input_title = new ArrayList<>();
         input_town = new ArrayList<>();
@@ -97,6 +98,7 @@ public class ListeActivity extends AppCompatActivity {
     }
 
     void storeDataInArray() {
+        //veritabanından veri ekleyebiliyor
         Cursor cursor = myDB.readAllData();
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No Data.", Toast.LENGTH_SHORT).show();

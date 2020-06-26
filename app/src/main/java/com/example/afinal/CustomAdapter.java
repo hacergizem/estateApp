@@ -82,7 +82,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             input_town = itemView.findViewById(R.id.textCity);
             input_pager = itemView.findViewById(R.id.textAdress);
             mainLayout = itemView.findViewById(R.id.mainLayout);
-
         }
     }
 }
