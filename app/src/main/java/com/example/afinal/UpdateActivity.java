@@ -37,10 +37,10 @@ public class UpdateActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         title_input = findViewById(R.id.addTitle2);
-        spinner = findViewById(R.id.spinnerTown1);
         spinner2 = findViewById(R.id.spinnerPager2);
         update_button = findViewById(R.id.updateButton);
         delete_button = findViewById(R.id.deleteButton);
+        spinner = findViewById(R.id.spinnerTown1);
 
         String[] iller = {"Ankara","Istanbul","İzmir"};
         ArrayAdapter<String> aa = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, iller);
